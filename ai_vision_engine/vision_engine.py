@@ -152,7 +152,6 @@ class BorderVisionEngine:
 
 # ==============================================================================
 # STANDALONE TEST RUNNER
-# Run this file directly to test on your webcam or a video file
 # ==============================================================================
 if __name__ == "__main__":
     # Change to your local video file
@@ -164,7 +163,6 @@ if __name__ == "__main__":
     tripwire = ((790, 735), (1350, 830)) 
     geofence = [(65, 80), (520, 80), (400, 480), (65, 480)]
     
-    # --- ADD THESE TWO LINES ---
     # Create an adjustable window instead of a fixed one
     cv2.namedWindow("SIH Border Analytics Prototype", cv2.WINDOW_NORMAL)
     
@@ -185,7 +183,6 @@ if __name__ == "__main__":
             restricted_polygon=geofence
         )
         
-        # --- THE RESTORED & UPGRADED ALERT LOGIC ---
         for alert in active_alerts:
             # 1. Print the critical alert to your terminal (Backend payload)
             print(f"🚨 ALERT DISPATCHED: {alert['type']} | Target: {alert['class']} (ID: {alert['track_id']})")
@@ -203,7 +200,6 @@ if __name__ == "__main__":
             )
         # -------------------------------------------
             
-        # Make sure this string perfectly matches your namedWindow string
         cv2.imshow("SIH Border Analytics Prototype", processed_frame)
         
         if cv2.waitKey(1) & 0xFF == ord('q'):
